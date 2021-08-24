@@ -1,5 +1,7 @@
 package com.mindex.challenge.data;
 
+import com.mindex.challenge.service.impl.Compensation;
+
 import java.util.List;
 
 public class Employee {
@@ -9,12 +11,19 @@ public class Employee {
     private String position;
     private String department;
     private List<Employee> directReports;
+    private Compensation compensation;
 
     public Employee() {
     }
 
     public String getEmployeeId() {
         return employeeId;
+    }
+
+    public Compensation getCompensation(){return compensation;}
+
+    public void setCompensation(Compensation compensation) {
+        this.compensation = compensation;
     }
 
     public void setEmployeeId(String employeeId) {
