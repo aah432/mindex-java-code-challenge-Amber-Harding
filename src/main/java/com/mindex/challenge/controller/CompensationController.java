@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class CompensationController {
 
@@ -34,8 +35,14 @@ public class CompensationController {
     @GetMapping("/compensation/{id}")
     public String read(@PathVariable String id){
         employee = employeeRepository.findByEmployeeId(id);
-        compensation = employee.getCompensation();
+        if(employee.getCompensation() == null){
+            return String.format("Name: %s %s Employee ID: %s " +
+                    "ERROR MESSAGE: Compensation is Null!",  employee.getFirstName(), employee.getLastName(), id);
+        }else{
+            return compensation.getCompensation();
+        }
 
-        return compensation.getCompensation();
+
+
     }
 }
